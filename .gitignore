@@ -1,2 +1,17 @@
-node_modules
 tests/minitest.js
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+npm-debug.log
+node_modules
+>>>>>>> 3389f0e4d1295b3a21beaa291fae2b2d70e71f3a

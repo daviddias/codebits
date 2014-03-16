@@ -4,13 +4,14 @@
   "description": "codebits.eu API module wrapper",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "node_modules/.bin/tap tests/*.test.js"
   },
   "author": "David Dias <daviddias.p@gmail.com> (http://daviddias.me)",
   "contributors": [],
   "license": "MIT",
   "dependencies": {
-    "request": "^2.34.0"
+    "request": "^2.34.0",
+    "tap": "^0.4.8"
   },
   "keywords": [
     "codebits",

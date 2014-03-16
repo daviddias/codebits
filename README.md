@@ -1,4 +1,4 @@
 Codebits Node.js Module Wrapper
 ========
 
-![Node-Codebits](node-codebits.png)
+![Node-Codebits](logo/node-codebits.png)

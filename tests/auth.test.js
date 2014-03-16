@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'test';
 var tap      = require('tap');
 var test     = tap.test;
 var codebits = require('./../index.js');
-var secret   = require('./secret.json');  
+var secret   = require('./secret.json');
 var token    = require('./../modules/token.js');
 
 test('Auth test', function(t) {

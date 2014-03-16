@@ -1,0 +1,22 @@
+{
+  "node"          : true,
+  "quotmark"      : true,
+  "strict"        : false,
+  "smarttabs"     : true,
+  "trailing"      : true,
+  "undef"         : true,
+  "unused"        : false,
+  "maxerr"        : 50,
+  "laxcomma"      : true,
+  "curly"         : true,
+  "eqeqeq"        : true,
+  "freeze"        : true,
+  "indent"        : 2,
+  "maxdepth"      : 3,
+  "maxlen"        : 80,
+  "globals"       : {
+                      "console": true,
+                      "define": true,
+                      "require": true
+  }
+}

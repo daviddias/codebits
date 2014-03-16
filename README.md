@@ -1,4 +1,3 @@
-codebits
+Codebits Node.js Module Wrapper
 ========
 
-Codebits API Node.js Module Wrapper

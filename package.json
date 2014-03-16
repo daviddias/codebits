@@ -1,14 +1,24 @@
 {
   "name": "codebits",
   "version": "0.0.0",
-  "description": "codebits.eu API module",
+  "description": "codebits.eu API module wrapper",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "David Dias <daviddias.p@gmail.com>",
+  "author": "David Dias <daviddias.p@gmail.com> (http://daviddias.me)",
+  "contributors": [],
   "license": "MIT",
   "dependencies": {
     "request": "^2.34.0"
+  },
+  "keywords": [
+    "codebits",
+    "lisbon"
+  ],
+  "repository": "git@github.com:diasdavid/codebits.git",
+  "homepage": "https://github.com/diasdavid/codebits",
+  "devDependencies": {
+    "precommit-hook": "^0.3.10"
   }
 }

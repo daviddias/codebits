@@ -1,4 +1,5 @@
 tests/minitest.js
+tests/secret.json
 lib-cov
 *.seed
 *.log

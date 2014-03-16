@@ -2,7 +2,7 @@ var request = require('request');
 var config  = require('./../config.json');
 
 exports = module.exports = function doRequest(options, cb) {
-  if (typeof options != 'object') { 
+  if (typeof options !== 'object') {
     options = { uri: options };
   }
   
@@ -19,7 +19,9 @@ exports = module.exports = function doRequest(options, cb) {
   return request(options, replied);
 
   function replied(err, res, body) {
-    if (err) return cb(err);
+    if (err) {
+      return cb(err);
+    }
     if (res.statusCode < 200 || res.statusCode >= 300) {
       err = new Error('response code was ' + res.statusCode);
       if (body) {
@@ -34,12 +36,12 @@ exports = module.exports = function doRequest(options, cb) {
 
 function inject(method) {
   exports[method] = function(options, cb) {
-    if (typeof options != 'object') {
+    if (typeof options !== 'object') {
       options = {uri: options};
     }
 
     options.method = method.toUpperCase();
 
     return exports(options, cb);
-  }
+  };
 }

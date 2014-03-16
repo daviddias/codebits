@@ -15,4 +15,4 @@ function getToken () {
 function saveToken (_token) {
   console.log('_token', token);
   token = _token;
-} 
+}

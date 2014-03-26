@@ -6,7 +6,7 @@ var secret = require('./secret.json');
 var token = require('./../modules/token.js');
 
 
-test('Search by name', function(t){
+test('Getting session/talk info', function(t){
   
   var id = '110';
   codebits.session.sessionInfo(id, function(err, result){

@@ -40,10 +40,12 @@ test('Log in', function(t) {
 
 test('Redeems badge through badge code', function(t) {
 
-  codebits.badges.redeemBadges('xpto', function(err, reply){
-    //Both return null even tho status code is 200 regardless of input
-    t.equal(err, null, 'Status code 200 - but returns null');
-    t.equal(reply, null, 'Status code 200 - but returns null');
+  var code = '29as-3ads302-a'; //random code
+  codebits.badges.redeemBadges(code, function(err, reply){
+
+    t.type(reply, 'string', 'Should be a string');
+    var res = JSON.parse(reply);
+    t.equal(res.error.id, '0', 'Should return an error with id 0');
     t.end();
   });
 });

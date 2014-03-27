@@ -22,6 +22,7 @@ exports = module.exports = function doRequest(options, cb) {
     if (err) {
       return cb(err);
     }
+
     if (res.statusCode < 200 || res.statusCode >= 300) {
       err = new Error('response code was ' + res.statusCode);
       if (body) {

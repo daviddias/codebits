@@ -39,20 +39,11 @@ test('Make a bot', function(t){
     head: '07',
     arms: '08',
     balloon: 'hello world',
-    file: 'file.png'
+    file: '/tmp/file.png'
   };
 
   codebits.bots.makeBot(opts, function(err, res, body){
     
-    //var w = fs.createWriteStream('my-file.png');
-    //result.pipe(w).on('data', console.log('omg'));
-
-    //var utf8 = require('utf8');
-    //fs.writeFile('message.png', utf8.encode(result), function (err) {
-    //  if (err) {throw err;}
-    //  console.log('file!');
-    //});
-
     t.type(res, 'Object', 'Should be an object');
     t.equal(
       res.headers['content-type'],
@@ -61,13 +52,6 @@ test('Make a bot', function(t){
     var d = fs.openSync(opts.file, 'r');
     t.notOk(err, 'Should be false. As in the file exists');
     
-    //console.log('content-type:', res.headers['content-type']);
-  
-    //console.log(img);
-    //t.type(img, 'stream', 'lol');
-    //console.log(result);
-    //t.type(result, 'string', 'asdkas');
-    //t.equal(getExtension(result), '.png', 'Should be .png');
     t.end();
   });
 });

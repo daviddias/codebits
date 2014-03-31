@@ -7,7 +7,6 @@ var token    = require('./../modules/token.js');
 
 
 test('List badges', function(t) {
-
   codebits.badges.listBadges(function (err, reply){
     t.type(reply, 'string', 'Should be a string');
     var res = JSON.parse(reply);
@@ -28,7 +27,7 @@ test('Gets users of a certain badge', function(t) {
   });
 });
 
-//First we must login
+
 test('Log in', function(t) {
   t.equal(token.getToken(), null, 'Token should be empty before');
   codebits.auth.logIn(secret.user, secret.password, function (err, _token){

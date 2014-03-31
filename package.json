@@ -7,7 +7,7 @@
     "test": "node_modules/.bin/tap tests/*.test.js"
   },
   "author": "David Dias <daviddias.p@gmail.com> (http://daviddias.me)",
-  "contributors": [],
+  "contributors": ["Alexandre Campos <alexandrefilipecampos@gmail.com>"],
   "license": "MIT",
   "dependencies": {
     "request": "^2.34.0",

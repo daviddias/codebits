@@ -4,16 +4,36 @@ Codebits API Node.js Module Wrapper
 [![Gitter chat](https://badges.gitter.im/diasdavid/codebits.png)](https://gitter.im/diasdavid/codebits) 
 [![Dependency Status](https://david-dm.org/diasdavid/codebits.svg?theme=shields.io)](https://david-dm.org/diasdavid/codebits)
 
-![Node-Codebits](logo/node-codebits-small.png)
+![Node-Codebits](https://github.com/diasdavid/codebits/raw/master/logo/node-codebits-small.png)
 
 This is the Codebits API Node.js Module Wrapper to speed up for development during that 72 hour straight hackathon we know and love!
 
 # Installation
 1. `$ npm install codebits`
 
+# Usage
+```javascript
+var codebits = require('codebits');
+codebits.logIn('USERNAME', 'PASSWORD', fucntion (err, token){
+  // codebits module will cache the token
+  codebits.getUserbyID('USERID', function(err, user){
+    console.log(user);
+  });
+ 
+});
+// but if you want to use another auth token, you can
+codebits.getUserbyID('USERID', anotherToken, function(err, user){
+  console.log(user);
+});
+```
+
 # Table of Contents
+[]()
+
 
 # Auth
+## logIn
+
 
 # Badges
 

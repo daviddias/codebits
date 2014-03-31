@@ -4,6 +4,7 @@ var test = tap.test;
 var codebits = require('./../index.js');
 var secret = require('./secret.json');
 var token = require('./../modules/token.js');
+var fs = require('fs');
 
 test('Get Bot Parts', function(t){
 
@@ -37,20 +38,34 @@ test('Make a bot', function(t){
     legs: '06',
     head: '07',
     arms: '08',
-    balloon: 'hello world'
+    balloon: 'hello world',
+    file: 'file.png'
   };
 
-  codebits.bots.makeBot(opts, function(err, result){
+  codebits.bots.makeBot(opts, function(err, res, body){
     
     //var w = fs.createWriteStream('my-file.png');
     //result.pipe(w).on('data', console.log('omg'));
 
     //var utf8 = require('utf8');
     //fs.writeFile('message.png', utf8.encode(result), function (err) {
-      //if (err) {throw err;}
-      //console.log('file!');
+    //  if (err) {throw err;}
+    //  console.log('file!');
     //});
 
+    t.type(res, 'Object', 'Should be an object');
+    t.equal(
+      res.headers['content-type'],
+      'image/png',
+      'Content type should be image/png');
+    var d = fs.openSync(opts.file, 'r');
+    t.notOk(err, 'Should be false. As in the file exists');
+    
+    //console.log('content-type:', res.headers['content-type']);
+  
+    //console.log(img);
+    //t.type(img, 'stream', 'lol');
+    //console.log(result);
     //t.type(result, 'string', 'asdkas');
     //t.equal(getExtension(result), '.png', 'Should be .png');
     t.end();
@@ -84,20 +99,10 @@ test('Set a users bot', function(t){
 
   codebits.bots.setBot(opts, function(err, result){
     
-    //var w = fs.createWriteStream('my-file.png');
-    //result.pipe(w).on('data', console.log('omg'));
-
-    //var utf8 = require('utf8');
-    //fs.writeFile('message.png', utf8.encode(result), function (err) {
-      //if (err) {throw err;}
-      //console.log('file!');
-    //});
-    
-    if(err) { console.log('deu erro velho');}
-    console.log(result);
-
-    //t.type(result, 'string', 'asdkas');
-    //t.equal(getExtension(result), '.png', 'Should be .png');
+    t.type(result, 'string', 'Should be a string.');
+    var res = JSON.parse(result);
+    t.equal(res.msg, 'bot set', 'Should be \"bot set\".');
+    t.equal(res.result, 1, 'Should be 1');
     t.end();
   });
 });

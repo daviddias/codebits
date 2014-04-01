@@ -14,7 +14,7 @@ This is the Codebits API Node.js Module Wrapper to speed up for development duri
 # Usage
 ```javascript
 var codebits = require('codebits');
-codebits.logIn('USERNAME', 'PASSWORD', fucntion (err, token){
+codebits.logIn('USERNAME', 'PASSWORD', function (err, token){
   // codebits module will cache the token
   codebits.getUserbyID('USERID', function(err, user){
     console.log(user);
@@ -27,6 +27,10 @@ codebits.getUserbyID('USERID', anotherToken, function(err, user){
 });
 ```
 
+# Disclaimer
+
+This module was built in a very quick 'hacky' manner, it has tests, which is a good thing, but if you find any bug or a better way to do things, we accept happily pull requests. Big thanks to [axfcampos](https://github.com/axfcampos) who liked the idea and offered his time to implement several of the functionalities.
+
 # Table of Contents
 []()
 
@@ -34,6 +38,14 @@ codebits.getUserbyID('USERID', anotherToken, function(err, user){
 # Auth
 ## logIn
 
+Creates a session token that is requested by calls that need auth
+
+**call:**
+```javascript
+codebits.logIn('USERNAME', 'PASSWORD', function (err, token){
+  // token is a string
+});
+```
 
 # Badges
 

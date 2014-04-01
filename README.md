@@ -36,6 +36,9 @@ This module was built in a very quick 'hacky' manner, it has tests, which is a g
 * [Auth](https://github.com/diasdavid/codebits#auth)
   * [logIn](https://github.com/diasdavid/codebits#login)
 * [Badges](https://github.com/diasdavid/codebits#badges)
+  * [listBadges]()
+  * [getBadgeUsers]()
+  * [redeemBadges `requires auth token`]()
 * [Bots](https://github.com/diasdavid/codebits#bots)
 * [Calendar](https://github.com/diasdavid/codebits#calendar)
 * [Call for Talks](https://github.com/diasdavid/codebits#call-for-talks)
@@ -45,7 +48,6 @@ This module was built in a very quick 'hacky' manner, it has tests, which is a g
 * [Users](https://github.com/diasdavid/codebits#users)
 * [Other Notes](https://github.com/diasdavid/codebits#other-notes)
 
-https://github.com/diasdavid/codebits#auth
 
 # Auth
 ### logIn
@@ -61,17 +63,36 @@ codebits.logIn('USERNAME', 'PASSWORD', function (err, token){
 
 # Badges
 
+### listBadges 
+
+### getBadgeUsers
+
+### redeemBadges 
+
+
 # Bots
+
+
 
 # Calendar
 
+
+
 # Call for Talks
+
+
 
 # Comments
 
+
+
 # Projects
 
+
+
 # Search
+
+
 
 # Users
 

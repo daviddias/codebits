@@ -32,11 +32,23 @@ codebits.getUserbyID('USERID', anotherToken, function(err, user){
 This module was built in a very quick 'hacky' manner, it has tests, which is a good thing, but if you find any bug or a better way to do things, we accept happily pull requests. Big thanks to [axfcampos](https://github.com/axfcampos) who liked the idea and offered his time to implement several of the functionalities.
 
 # Table of Contents
-[]()
 
+* [Auth](https://github.com/diasdavid/codebits#auth)
+  * [logIn](https://github.com/diasdavid/codebits#login)
+* [Badges](https://github.com/diasdavid/codebits#badges)
+* [Bots](https://github.com/diasdavid/codebits#bots)
+* [Calendar](https://github.com/diasdavid/codebits#calendar)
+* [Call for Talks](https://github.com/diasdavid/codebits#call-for-talks)
+* [Comments](https://github.com/diasdavid/codebits#comments)
+* [Projects](https://github.com/diasdavid/codebits#projects)
+* [Search](https://github.com/diasdavid/codebits#search)
+* [Users](https://github.com/diasdavid/codebits#users)
+* [Other Notes](https://github.com/diasdavid/codebits#other-notes)
+
+https://github.com/diasdavid/codebits#auth
 
 # Auth
-## logIn
+### logIn
 
 Creates a session token that is requested by calls that need auth
 

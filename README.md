@@ -29,7 +29,7 @@ codebits.getUserbyID('USERID', anotherToken, function(err, user){
 
 # Disclaimer
 
-This module was built in a very quick 'hacky' manner, it has tests, which is a good thing, but if you find any bug or a better way to do things, we accept happily pull requests. Big thanks to [axfcampos](https://github.com/axfcampos) who liked the idea and offered his time to implement several of the functionalities.
+This module was built in a very quick 'hacky' manner, it has tests, which is a good thing, but it is not bullet proof, if you find any bug or a better way to do things, we accept happily pull requests. Big thanks to [axfcampos](https://github.com/axfcampos) who liked the idea and offered his time to implement several of the functionalities.
 
 # Table of Contents
 

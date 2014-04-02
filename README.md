@@ -14,15 +14,15 @@ This is the Codebits API Node.js Module Wrapper to speed up for development duri
 # Usage
 ```javascript
 var codebits = require('codebits');
-codebits.logIn('USERNAME', 'PASSWORD', function (err, token){
+codebits.auth.logIn('USERNAME', 'PASSWORD', function (err, token){
   // codebits module will cache the token
-  codebits.getUserbyID('USERID', function(err, user){
+  codebits.users.getUserbyID('USERID', function(err, user){
     console.log(user);
   });
  
 });
 // but if you want to use another auth token, you can
-codebits.getUserbyID('USERID', anotherToken, function(err, user){
+codebits.users.getUserbyID('USERID', anotherToken, function(err, user){
   console.log(user);
 });
 ```
@@ -40,12 +40,29 @@ This module was built in a very quick 'hacky' manner, it has tests, which is a g
   * [getBadgeUsers](https://github.com/diasdavid/codebits#getbadgeusers)
   * [redeemBadges `requires auth token`](https://github.com/diasdavid/codebits#redeembadges)
 * [Bots](https://github.com/diasdavid/codebits#bots)
+  * [getBotParts](https://github.com/diasdavid/codebits#getBotsParts)
+  * [getUserBot](https://github.com/diasdavid/codebits#getUserBot)
+  * [makeBot](https://github.com/diasdavid/codebits#makeBot)
+  * [setBot `requires auth token`](https://github.com/diasdavid/codebits#setBot)
 * [Calendar](https://github.com/diasdavid/codebits#calendar)
 * [Call for Talks](https://github.com/diasdavid/codebits#call-for-talks)
-* [Comments](https://github.com/diasdavid/codebits#comments)
+  * [listSubmissions `optional auth token`](https://github.com/diasdavid/codebits#listSubmissions)
+  * [voteTalkUp `requires auth token`](https://github.com/diasdavid/codebits#voteTalkUp)
+  * [voteTalkDown `requires auth token`](https://github.com/diasdavid/codebits#voteTalkDown)
+* [Comments `requires auth token`](https://github.com/diasdavid/codebits#comments)
 * [Projects](https://github.com/diasdavid/codebits#projects)
-* [Search](https://github.com/diasdavid/codebits#search)
+  * [listProject `requires auth token`](https://github.com/diasdavid/codebits#listProjects)
+  * [getProjectInfo `requires auth token`](https://github.com/diasdavid/codebits#getProjectInfo)
+  * [getCurrentVotes `requires auth token`](https://github.com/diasdavid/codebits#getCurrentVotes)
+  * [voteCurrentProject `requires auth token`](https://github.com/diasdavid/codebits#voteCurrentProject)
+* [Search `requires auth token`](https://github.com/diasdavid/codebits#search)
 * [Users](https://github.com/diasdavid/codebits#users)
+  * [getUserbyID `requires auth token`](https://github.com/diasdavid/codebits#getUserbyID)
+  * [getUserbyNick `requires auth token`](https://github.com/diasdavid/codebits#getUserbyNick)
+  * [addUserAsFriend `requires auth token`](https://github.com/diasdavid/codebits#addUserAsFriend)
+  * [rejectUserAsFriend `requires auth token`](https://github.com/diasdavid/codebits#rejectUserAsFriend)
+  * [listAcceptedUsers `requires auth token`](https://github.com/diasdavid/codebits#listAcceptedUsers)
+  * [userFavSessions `requires auth token`](https://github.com/diasdavid/codebits#userFavSessions)
 * [Other Notes](https://github.com/diasdavid/codebits#other-notes)
 
 
@@ -56,7 +73,7 @@ Creates a session token that is requested by calls that need auth
 
 **call:**
 ```javascript
-codebits.logIn('USERNAME', 'PASSWORD', function (err, token){
+codebits.auth.logIn('USERNAME', 'PASSWORD', function (err, token){
   // token is a string
 });
 ```
@@ -175,7 +192,8 @@ Format for `opts` field is the same as [makeBot](https://github.com/diasdavid/co
 Returns a success/unsuccess message. 
 
 ```javascript
-codebits.bots.setBot(opts, function (err, reply){
+//_token is optional
+codebits.bots.setBot(opts, _token, function (err, reply){
   /*  reply is a string, use JSON.parse
       if success, JSON.parse(reply).result should be 1, 0 otherwise
   */
@@ -218,7 +236,8 @@ codebits.callfortalks.listSubmissions( function (err, reply){
 Vote up a proposed talk by its id.
 
 ```javascript
-codebits.callfortalks.voteTalkUp('TALK_ID', function (err, reply){
+//_token is optional
+codebits.callfortalks.voteTalkUp('TALK_ID', _token, function (err, reply){
   /*  reply is a string, use JSON.parse
       Confirmation object returns the same talk id
   */
@@ -231,7 +250,8 @@ codebits.callfortalks.voteTalkUp('TALK_ID', function (err, reply){
 Vote down a proposed talk by its id.
 
 ```javascript
-codebits.callfortalks.voteTalkDown('TALK_ID', function (err, reply){
+//_token is optional
+codebits.callfortalks.voteTalkDown('TALK_ID', _token, function (err, reply){
   /*  reply is a string, use JSON.parse
       Confirmation object returns the same talk id
   */
@@ -336,9 +356,9 @@ codebits.search.searchByName('nick', _token, function (err, reply){
 
 # Users
 
-[All of the following commands **require authentication!**]
-
 ### getUserByID
+
+**[requires authentication!]**
 
 Returns basic user information.
 
@@ -352,6 +372,8 @@ codebits.users.getUserbyID('ID', _token, function (err, reply){
 
 ### getUserbyNick
 
+**[requires authentication!]**
+
 Same as above, uses nick instead of ID. 
 
 ```javascript
@@ -363,6 +385,8 @@ codebits.users.getUserbyNick('NICK', _token, function (err, reply){
 ```
 
 ### getUserFriends
+
+**[requires authentication!]**
 
 Returns the list of the user's friends. A word about the status: accepted is accepted by both friends, requested is awaiting acceptance on your side, pending is pending acceptance on your friend's side.
 
@@ -376,6 +400,8 @@ codebits.users.getUserFriends('ID', _token, function (err, reply){
 
 ### addUserAsFriend
 
+**[requires authentication!]**
+
 Adds or confirms a user as your friend. Requires confirmation at the other end.
 
 ```javascript
@@ -387,6 +413,8 @@ codebits.users.addUserAsFriend('ID', _token, function (err, reply){
 ```
 
 ### rejectUserAsFriend
+
+**[requires authentication!]**
 
 Rejects a user as your friend. Deletes the pending request at the other end, if it exists. 
 
@@ -400,6 +428,8 @@ codebits.users.rejectUserAsFriend('ID', _token, function (err, reply){
 
 ### listAcceptedUsers
 
+**[requires authentication!]**
+
 Returns the list of accepted users for this year's Codebits. You can filter the list by an optional 'skill'. The list of skills is: php perl ruby python erlang cc cocoa dotnet java javascript css api web embbeded mobile hardware microformats security sysadmin network desktop scala clojure design dbdesign nosql cooking processing max 
 
 ```javascript
@@ -411,6 +441,8 @@ codebits.users.listAcceptedUsers('SKILL', _token, function (err, reply){
 ```
 
 ### userFavSessions
+
+**[requires authentication!]**
 
 Returns the list of favorite calendar sessions for a user.
 

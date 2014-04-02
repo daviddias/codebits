@@ -97,6 +97,7 @@ codebits.badges.getBadgeUsers('BADGE_ID', function(err, reply){
 ### redeemBadges 
 
 **[Requires authentication!]**
+
 Redeem a badge through a badge code 
 
 ```javascript
@@ -167,7 +168,8 @@ codebits.bots.makeBot(opts, function (err, res, body){
 
 ### setBot 
 
-*[requires authentication!]*
+**[requires authentication!]**
+
 Sets the bot of the authenticated user.
 Format for `opts` field is the same as [makeBot](https://github.com/diasdavid/codebits#makeBot) minus the `file` field.
 Returns a success/unsuccess message. 
@@ -196,7 +198,8 @@ codebits.calendar.getCalendar( function (err, result){
 
 ### listSubmissions 
 
-*[authentication optional!]*
+**[authentication optional!]**
+
 Returns the list of the call for talks submissions for this year.
 Authentication is optional, returns the user thumb option under 'rated', if provided.
 
@@ -210,7 +213,8 @@ codebits.callfortalks.listSubmissions( function (err, reply){
 
 ### voteTalkUp 
 
-*[authentication required!]*
+**[authentication required!]**
+
 Vote up a proposed talk by its id.
 
 ```javascript
@@ -222,7 +226,8 @@ codebits.callfortalks.voteTalkUp('TALK_ID', function (err, reply){
 ```
 ### voteTalkDown 
 
-*[authentication required!]*
+**[authentication required!]**
+
 Vote down a proposed talk by its id.
 
 ```javascript
@@ -235,7 +240,8 @@ codebits.callfortalks.voteTalkDown('TALK_ID', function (err, reply){
 
 # Comments
 
-*[requires authentication!]*
+**[requires authentication!]**
+
 Posts a new comment on a certain thread identified by the comment_token. 
 Some calls (ie: [listSubmission](https://github.com/diasdavid/codebits#listSubmissions)) will provide you with a comments_token field you can use here. 
 
@@ -258,7 +264,8 @@ codebits.comment.postComment(opts, function (err, reply){
 
 ### listProjects 
 
-*[requires authentication!]*
+**[requires authentication!]**
+
 Returns the list of submitted projects for this year's competition. 
 
 ```javascript
@@ -272,7 +279,8 @@ codebits.projects.listProjects(_token, function (err, reply){
 
 ### getProjectInfo 
 
-*[requires authentication!}*
+**[requires authentication!}**
+
 Returns information about a specfic project.
 
 ```javascript
@@ -298,7 +306,8 @@ codebits.projects.getCurrentVotes( function (err, reply){
 
 ### voteCurrentProject 
 
-*[requires authentication!]*
+**[requires authentication!]**
+
 Votes for the current project being presented. 1 for yes (liked it), 0 for no. 
 
 ```javascript
@@ -312,7 +321,8 @@ codebits.projects.voteCurrentProject('1', _token, function (err, reply){
 
 # Search
 
-*[Requires authentication]*
+**[Requires authentication]**
+
 Search this year's edition registered users database
 
 ```javascript
@@ -326,48 +336,90 @@ codebits.search.searchByName('nick', _token, function (err, reply){
 
 # Users
 
-[All of the following commands *require authentication!*]
+[All of the following commands **require authentication!**]
 
 ### getUserByID
 
-```javascript
+Returns basic user information.
 
+```javascript
+//_token is optional
+codebits.users.getUserbyID('ID', _token, function (err, reply){
+  /*  reply is a string, use JSON.parse
+  */  
+});
 ```
 
 ### getUserbyNick
 
-```javascript
+Same as above, uses nick instead of ID. 
 
+```javascript
+//_token is optional
+codebits.users.getUserbyNick('NICK', _token, function (err, reply){
+  /*  reply is a string, use JSON.parse
+  */  
+});
 ```
 
 ### getUserFriends
 
-```javascript
+Returns the list of the user's friends. A word about the status: accepted is accepted by both friends, requested is awaiting acceptance on your side, pending is pending acceptance on your friend's side.
 
+```javascript
+//_token is optional
+codebits.users.getUserFriends('ID', _token, function (err, reply){
+  /*  reply is a string, use JSON.parse
+  */  
+});
 ```
 
 ### addUserAsFriend
 
-```javascript
+Adds or confirms a user as your friend. Requires confirmation at the other end.
 
+```javascript
+//_token is optional
+codebits.users.addUserAsFriend('ID', _token, function (err, reply){
+  /*  reply is a string, use JSON.parse
+  */  
+});
 ```
 
 ### rejectUserAsFriend
 
-```javascript
+Rejects a user as your friend. Deletes the pending request at the other end, if it exists. 
 
+```javascript
+//_token is optional
+codebits.users.rejectUserAsFriend('ID', _token, function (err, reply){
+  /*  reply is a string, use JSON.parse
+  */  
+});
 ```
 
 ### listAcceptedUsers
 
-```javascript
+Returns the list of accepted users for this year's Codebits. You can filter the list by an optional 'skill'. The list of skills is: php perl ruby python erlang cc cocoa dotnet java javascript css api web embbeded mobile hardware microformats security sysadmin network desktop scala clojure design dbdesign nosql cooking processing max 
 
+```javascript
+//_token is optional
+codebits.users.listAcceptedUsers('SKILL', _token, function (err, reply){
+  /*  reply is a string, use JSON.parse
+  */  
+});
 ```
 
 ### userFavSessions
 
-```javascript
+Returns the list of favorite calendar sessions for a user.
 
+```javascript
+//_token is optional
+codebits.users.userFavSessions('ID', _token, function (err, reply){
+  /*  reply is a string, use JSON.parse
+  */
+});
 ```
 
 # Other notes:

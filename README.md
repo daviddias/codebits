@@ -65,6 +65,23 @@ codebits.logIn('USERNAME', 'PASSWORD', function (err, token){
 
 ### listBadges 
 
+List of all the existing badges
+
+```javascript
+codebits.badges.listBadges(function (err, reply){
+  // reply is a string, use JSON.parse
+  // structure: 
+  //{
+  //  id,           //badge id
+  //  img,          //img url
+  //  title,        //badge title
+  //  description,  //badge description 
+  //  usercount     //number of users who have this badge
+  //}
+
+});
+```
+
 ### getBadgeUsers
 
 ### redeemBadges 

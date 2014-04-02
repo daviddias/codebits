@@ -69,28 +69,114 @@ List of all the existing badges
 
 ```javascript
 codebits.badges.listBadges(function (err, reply){
-/* reply is a string, use JSON.parse
-  each array elem: 
-[{  
-  "id": "string",           //badge id
-  "img": "string",          //img url
-  "title": "string",        //badge title
-  "description": "string",  //badge description 
-  "usercount": "string"     //number of users who have this badge
-} ]
-*/  
+  /*  reply is a string, use JSON.parse
+      each array elem: 
+  {  
+    "id": "string",           //badge id
+    "img": "string",          //img url
+    "title": "string",        //badge title
+    "description": "string",  //badge description 
+    "usercount": "string"     //number of users who have this badge
+  }
+  */  
 });
 ```
 
-
 ### getBadgeUsers
 
-### redeemBadges 
+List of all the users who have a certain badge
 
+```javascript
+codebits.badges.getBadgeUsers('BADGE_ID', function(err, reply){
+  /*  reply is a string, use JSON.parse
+
+  */
+});
+```
+
+### redeemBadges (Requires authentication!)
+
+Redeem a badge through a badge code 
+
+```javascript
+codebits.badges.redeemBadges('BADGE_CODE', function (err, reply){
+  /*  reply is a string, use JSON.parse
+      reply.error.id = '1' if success, 0 otherwise 
+  */
+});
+```
 
 # Bots
 
+### getBodyParts
 
+Returns the body parts you can play with to build your bot. 
+
+```javascript
+codebits.bots.getBodyParts( function (err, reply){
+  /*  reply is a string, use JSON.parse
+      full list of body parts
+  */
+});
+
+```
+
+### getUserBot
+
+Returns the bot structure for a certain user 
+
+```javascript
+codebits.bots.getUserBot('USER_ID', function (err, reply){
+  /*  reply is a string, use JSON.parse
+      body,bgcolor,grad,eyes,mouth,legs,head,arms,balloon.
+  */
+});
+```
+
+### makeBot
+
+Returns the bot image. 
+Format as follows (example): 
+```json
+var opts = {
+  body: '01',
+  bgcolor: null,
+  grad: '03',
+  eyes: '04',
+  mouth: '05',
+  legs: '06',
+  head: '07',
+  arms: '08',
+  balloon: 'hello world! :-)',
+  file: '/path/to/save/returned/image.png'
+}
+```
+
+Each field has the exact ID (with leading zeros) from [getBodyParts](https://github.com/diasdavid/codebits#getBodyParts). 
+
+If you don't want a certain body part to be rendered, use `null` for the ID. The balloon is optional.
+If `file:` field is null it defaults to `/tmp`.
+
+```javascript
+codebits.bots.makeBot(opts, function (err, res, body){
+  
+
+});
+```
+
+### setBot (requires authentication!)
+
+Sets the bot of the authenticated user.
+Format for `opts` field is the same as [makeBot](https://github.com/diasdavid/codebits#makeBot) minus the `file` field.
+Returns a success/unsuccess message. 
+
+```javascript
+codebits.bots.setBot(opts, function (err, reply){
+  /*  reply is a string, use JSON.parse
+      if success, JSON.parse(reply).result should be 1, 0 otherwise
+  */
+});
+```
 
 # Calendar
 

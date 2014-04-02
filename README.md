@@ -94,8 +94,9 @@ codebits.badges.getBadgeUsers('BADGE_ID', function(err, reply){
 });
 ```
 
-### redeemBadges (Requires authentication!)
+### redeemBadges 
 
+**[Requires authentication!]**
 Redeem a badge through a badge code 
 
 ```javascript
@@ -164,8 +165,9 @@ codebits.bots.makeBot(opts, function (err, res, body){
 });
 ```
 
-### setBot (requires authentication!)
+### setBot 
 
+*[requires authentication!]*
 Sets the bot of the authenticated user.
 Format for `opts` field is the same as [makeBot](https://github.com/diasdavid/codebits#makeBot) minus the `file` field.
 Returns a success/unsuccess message. 
@@ -192,8 +194,9 @@ codebits.calendar.getCalendar( function (err, result){
 
 # Call for Talks
 
-### listSubmissions (authentication optional!)
+### listSubmissions 
 
+*[authentication optional!]*
 Returns the list of the call for talks submissions for this year.
 Authentication is optional, returns the user thumb option under 'rated', if provided.
 
@@ -205,8 +208,9 @@ codebits.callfortalks.listSubmissions( function (err, reply){
 });
 ```
 
-### voteTalkUp (authentication required!)
+### voteTalkUp 
 
+*[authentication required!]*
 Vote up a proposed talk by its id.
 
 ```javascript
@@ -216,8 +220,9 @@ codebits.callfortalks.voteTalkUp('TALK_ID', function (err, reply){
   */
 });
 ```
-### voteTalkDown (authentication required!)
+### voteTalkDown 
 
+*[authentication required!]*
 Vote down a proposed talk by its id.
 
 ```javascript
@@ -230,7 +235,7 @@ codebits.callfortalks.voteTalkDown('TALK_ID', function (err, reply){
 
 # Comments
 
-Requires authentication!
+*[requires authentication!]*
 Posts a new comment on a certain thread identified by the comment_token. 
 Some calls (ie: [listSubmission](https://github.com/diasdavid/codebits#listSubmissions)) will provide you with a comments_token field you can use here. 
 
@@ -251,8 +256,9 @@ codebits.comment.postComment(opts, function (err, reply){
 
 # Projects
 
-### listProjects (requires authentication!)
+### listProjects 
 
+*[requires authentication!]*
 Returns the list of submitted projects for this year's competition. 
 
 ```javascript
@@ -264,8 +270,9 @@ codebits.projects.listProjects(_token, function (err, reply){
 });
 ```
 
-### getProjectInfo (requires authentication!)
+### getProjectInfo 
 
+*[requires authentication!}*
 Returns information about a specfic project.
 
 ```javascript
@@ -289,8 +296,9 @@ codebits.projects.getCurrentVotes( function (err, reply){
 });
 ```
 
-### voteCurrentProject (requires authentication!)
+### voteCurrentProject 
 
+*[requires authentication!]*
 Votes for the current project being presented. 1 for yes (liked it), 0 for no. 
 
 ```javascript
@@ -304,13 +312,63 @@ codebits.projects.voteCurrentProject('1', _token, function (err, reply){
 
 # Search
 
+*[Requires authentication]*
+Search this year's edition registered users database
 
+```javascript
+//_token is optional
+codebits.search.searchByName('nick', _token, function (err, reply){
+  /*  reply is a string, use JSON.parse
+      Gets users with nick or similar
+  */
+});
+```
 
 # Users
 
+[All of the following commands *require authentication!*]
 
+### getUserByID
 
+```javascript
 
+```
+
+### getUserbyNick
+
+```javascript
+
+```
+
+### getUserFriends
+
+```javascript
+
+```
+
+### addUserAsFriend
+
+```javascript
+
+```
+
+### rejectUserAsFriend
+
+```javascript
+
+```
+
+### listAcceptedUsers
+
+```javascript
+
+```
+
+### userFavSessions
+
+```javascript
+
+```
 
 # Other notes:
 

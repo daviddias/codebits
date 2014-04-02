@@ -70,16 +70,20 @@ List of all the existing badges
 ```javascript
 codebits.badges.listBadges(function (err, reply){
   // reply is a string, use JSON.parse
-  // structure: 
-  //{
-  //  id,           //badge id
-  //  img,          //img url
-  //  title,        //badge title
-  //  description,  //badge description 
-  //  usercount     //number of users who have this badge
-  //}
+   
+  
 
 });
+```
+
+```json
+[{  
+  "id": "string",   //badge id
+  "img": "string",  //img url
+  "title",            //badge title
+  description,      //badge description 
+  usercount         //number of users who have this badge
+} ]
 ```
 
 ### getBadgeUsers

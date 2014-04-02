@@ -19,7 +19,9 @@ test('List Submissions', function(t) {
 
   codebits.callfortalks.listSubmissions(function(err, result) {
 
-    t.equal(1, 1, 'asdasldkasldkalsdkasld');
+    t.type(result, 'string', 'Should be a string');
+    var res = JSON.parse(result);
+    t.type(res, 'Array', 'Should be an array');
     t.end();
   });
 });

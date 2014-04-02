@@ -136,8 +136,8 @@ codebits.bots.getUserBot('USER_ID', function (err, reply){
 ### makeBot
 
 Returns the bot image. 
-Format as follows (example): 
-```json
+Request format as follows (example): 
+```javascript
 var opts = {
   body: '01',
   bgcolor: null,
@@ -155,7 +155,7 @@ var opts = {
 Each field has the exact ID (with leading zeros) from [getBodyParts](https://github.com/diasdavid/codebits#getBodyParts). 
 
 If you don't want a certain body part to be rendered, use `null` for the ID. The balloon is optional.
-If `file:` field is null it defaults to `/tmp`.
+If `file:` field is null it defaults to `/tmp/bot.png`.
 
 ```javascript
 codebits.bots.makeBot(opts, function (err, res, body){
@@ -180,19 +180,127 @@ codebits.bots.setBot(opts, function (err, reply){
 
 # Calendar
 
+Returns this year's codebits calendar with detailed information. 
 
+```javascript
+codebits.calendar.getCalendar( function (err, result){
+  /*  result is a string, use JSON.parse
+      Calendar is an array
+  */
+});
+```
 
 # Call for Talks
 
+### listSubmissions (authentication optional!)
 
+Returns the list of the call for talks submissions for this year.
+Authentication is optional, returns the user thumb option under 'rated', if provided.
+
+```javascript
+codebits.callfortalks.listSubmissions( function (err, reply){
+  /*  reply is a string, use JSON.parse
+      each talk object comes in an array
+  */
+});
+```
+
+### voteTalkUp (authentication required!)
+
+Vote up a proposed talk by its id.
+
+```javascript
+codebits.callfortalks.voteTalkUp('TALK_ID', function (err, reply){
+  /*  reply is a string, use JSON.parse
+      Confirmation object returns the same talk id
+  */
+});
+```
+### voteTalkDown (authentication required!)
+
+Vote down a proposed talk by its id.
+
+```javascript
+codebits.callfortalks.voteTalkDown('TALK_ID', function (err, reply){
+  /*  reply is a string, use JSON.parse
+      Confirmation object returns the same talk id
+  */
+});
+```
 
 # Comments
 
+Requires authentication!
+Posts a new comment on a certain thread identified by the comment_token. 
+Some calls (ie: [listSubmission](https://github.com/diasdavid/codebits#listSubmissions)) will provide you with a comments_token field you can use here. 
 
+```javascript
+var opts = {
+  comment_token: '1234asdf1234qwerty',
+  comment: 'Hello Codebits World!',
+  subect: 'My Hello Message' //optional
+  token: authtoken //optional, If not submitted our code will search for it ˆ_ˆ
+};
+
+codebits.comment.postComment(opts, function (err, reply){
+  /*  reply is a string, use JSON.parse
+      JSON.parse(reply).result should 1 if successm 0 otherwise
+  */
+});
+```
 
 # Projects
 
+### listProjects (requires authentication!)
 
+Returns the list of submitted projects for this year's competition. 
+
+```javascript
+//_token is optional
+codebits.projects.listProjects(_token, function (err, reply){
+  /*  reply is a string, use JSON.parse
+      returns an array where each object is a project
+  */
+});
+```
+
+### getProjectInfo (requires authentication!)
+
+Returns information about a specfic project.
+
+```javascript
+//_token is optional
+codebits.ptojects.getProjectInfo('PROJECT_ID', _token, function (err, reply){
+  /*  reply is a string, use JSON.parse
+      contains object with project info
+  */
+});
+```
+
+### getCurrentVotes
+
+Returns information about the number of votes for the project being voted at the project's presentation session 
+
+```javascript
+codebits.projects.getCurrentVotes( function (err, reply){
+  /*  repluy is string, use JSON.parse
+      d
+  */
+});
+```
+
+### voteCurrentProject (requires authentication!)
+
+Votes for the current project being presented. 1 for yes (liked it), 0 for no. 
+
+```javascript
+//_token is optional
+codebits.projects.voteCurrentProject('1', _token, function (err, reply){
+  /*  reply is string, use JSON.parse
+      JSON.parse(reply).result should be 1 if you voted 1, 0 otherwise
+  */
+});
+```
 
 # Search
 

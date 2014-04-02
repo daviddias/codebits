@@ -16,7 +16,7 @@ test('Login', function(t){
 });
 
 
-test('Search by name', function(t){
+test('Post a comment', function(t){
   
   var opts = {
     comment_token: '75f0e78c6abdbe9222d41950bee59155ccc19292',

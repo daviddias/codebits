@@ -26,10 +26,9 @@ test('Post a comment', function(t){
 
   codebits.comment.postComment(opts, function(err, result){
     
-    var res = JSON.parse(result);
-    t.type(res.result, 'number', 'Should be a number');
-    t.equal(res.result, 1, 'Should be 1 if success');
-    t.type(res.msg, 'string', 'Should be a string');
+    t.type(result.result, 'number', 'Should be a number');
+    t.equal(result.result, 1, 'Should be 1 if success');
+    t.type(result.msg, 'string', 'Should be a string');
     t.end();
 
   });

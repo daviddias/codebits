@@ -8,10 +8,9 @@ var token    = require('./../modules/token.js');
 
 test('List badges', function(t) {
   codebits.badges.listBadges(function (err, reply){
-    t.type(reply, 'string', 'Should be a string');
-    var res = JSON.parse(reply);
-    t.type(res, 'Array', 'Should be an array');
-    t.equal(res[0].id, '1', 'Should be one');
+    t.type(reply, 'Object', 'Should be a object');
+    t.type(reply, 'Array', 'Should be an array');
+    t.equal(reply[0].id, '1', 'Should be one');
     t.end();
   });
 });
@@ -19,10 +18,9 @@ test('List badges', function(t) {
 test('Gets users of a certain badge', function(t) {
   var id = '1';
   codebits.badges.getBadgeUsers(id, function(err, reply){
-    t.type(reply, 'string', 'Should be a string');
-    var res = JSON.parse(reply);
-    t.type(res, 'Array', 'Should be an array');
-    t.equal(res[0].uid, '1081', 'Should be 1081');
+    t.type(reply, 'Object', 'Should be a object');
+    t.type(reply, 'Array', 'Should be an array');
+    t.equal(reply[0].uid, '1081', 'Should be 1081');
     t.end();
   });
 });
@@ -42,9 +40,8 @@ test('Redeems badge through badge code', function(t) {
   var code = '29as-3ads302-a'; //random code
   codebits.badges.redeemBadges(code, function(err, reply){
 
-    t.type(reply, 'string', 'Should be a string');
-    var res = JSON.parse(reply);
-    t.equal(res.error.id, '0', 'Should return an error with id 0');
+    t.type(reply, 'Object', 'Should be a object');
+    t.equal(reply.error.id, '0', 'Should return an error with id 0');
     t.end();
   });
 });

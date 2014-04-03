@@ -19,9 +19,8 @@ test('List Submissions', function(t) {
 
   codebits.callfortalks.listSubmissions(function(err, result) {
 
-    t.type(result, 'string', 'Should be a string');
-    var res = JSON.parse(result);
-    t.type(res, 'Array', 'Should be an array');
+    t.type(result, 'Object', 'Should be a object');
+    t.type(result, 'Array', 'Should be an array');
     t.end();
   });
 });
@@ -30,10 +29,9 @@ test('Vote talk up', function(t) {
 
   var talk_id = '100';
   codebits.callfortalks.voteTalkUp(talk_id, function(err, result) {
-    t.type(result, 'string', 'Should be a string');
-    var res = JSON.parse(result);
-    t.equal(res.talk, talk_id, 'Should be the same');
-    t.equal(res.thumbs, 'up', 'Thumbs should point up');
+    t.type(result, 'Object', 'Should be a Object');
+    t.equal(result.talk, talk_id, 'Should be the same');
+    t.equal(result.thumbs, 'up', 'Thumbs should point up');
     t.end();
   });
 });
@@ -42,10 +40,9 @@ test('Vote talk down', function(t) {
   
   var talk_id = '100';
   codebits.callfortalks.voteTalkDown(talk_id, function(err, result) {
-    t.type(result, 'string', 'Should be a string');
-    var res = JSON.parse(result);
-    t.equal(res.talk, talk_id, 'Should be the same');
-    t.equal(res.thumbs, 'down', 'Thumbs should point down');
+    t.type(result, 'Object', 'Should be a object');
+    t.equal(result.talk, talk_id, 'Should be the same');
+    t.equal(result.thumbs, 'down', 'Thumbs should point down');
     t.end();
   });
 });

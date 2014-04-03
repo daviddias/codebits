@@ -16,18 +16,16 @@ test('Log in', function(t) {
 
 test('Get User by ID', function(t) {
   codebits.users.getUserbyID('1', function(err, result) {
-    t.type(result, 'string', 'Result User should be a String');
-    var user = JSON.parse(result);
-    t.equal(user.nick, 'celso', 'User 1 should be celso');
+    t.type(result, 'Object', 'Result User should be a object');
+    t.equal(result.nick, 'celso', 'User 1 should be celso');
     t.end();
   });
 });
 
 test('Get User by Nick', function(t) {
   codebits.users.getUserbyNick('celso', function(err, result) {
-    t.type(result, 'string', 'Result User should be a String');
-    var user = JSON.parse(result);
-    t.equal(user.nick, 'celso', 'User 1 should be celso');
+    t.type(result, 'Object', 'Result User should be a object');
+    t.equal(result.nick, 'celso', 'User 1 should be celso');
     t.end();
   });
 });

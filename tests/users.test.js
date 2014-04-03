@@ -45,6 +45,11 @@ test('Get User by Nick', function(t) {
 
 // });
 
+test('list accepted users', function(t){
+  codebits.users.listAcceptedUsers(function(err, reply){
+    t.end();
+  });
+});
 
 // test('List of Accepted Users', function(t) {
 // // function listAcceptedUsers(skill, cb) 

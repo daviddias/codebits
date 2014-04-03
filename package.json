@@ -1,6 +1,6 @@
 {
   "name": "codebits",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "codebits.eu API module wrapper",
   "main": "index.js",
   "scripts": {

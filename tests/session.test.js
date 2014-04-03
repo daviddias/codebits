@@ -8,10 +8,9 @@ var token = require('./../modules/token.js');
 test('Getting session/talk info', function(t){
   var id = '110';
   codebits.session.sessionInfo(id, function(err, result){
-    t.type(result, 'string', 'Result should be a string');
-    var res = JSON.parse(result);
-    t.type(res.id, 'string', 'Should be a number');
-    t.equal(res.id, id, 'Should have the same id');
+    t.type(result, 'Object', 'Result should be a object');
+    t.type(result.id, 'string', 'Should be a number');
+    t.equal(result.id, id, 'Should have the same id');
     t.end();
   });
 });

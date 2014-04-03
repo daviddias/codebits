@@ -17,9 +17,8 @@ test('Login', function(t){
 test('Search by name', function(t){
   var name = 'celso';
   codebits.search.searchByName(name, function(err, result){
-    t.type(result, 'string', 'Should be a string');
-    var res = JSON.parse(result);
-    t.equal(res[1].nick, name, 'Should be equal to name searched');
+    t.type(result, 'Object', 'Should be a object');
+    t.equal(result[1].nick, name, 'Should be equal to name searched');
     t.end();
   });
 });

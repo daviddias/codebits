@@ -16,7 +16,7 @@ test('Login', function(t){
 });
 
 
-test('Search by name', function(t){
+test('Post a comment', function(t){
   
   var opts = {
     comment_token: '75f0e78c6abdbe9222d41950bee59155ccc19292',
@@ -26,10 +26,9 @@ test('Search by name', function(t){
 
   codebits.comment.postComment(opts, function(err, result){
     
-    var res = JSON.parse(result);
-    t.type(res.result, 'number', 'Should be a number');
-    t.equal(res.result, 1, 'Should be 1 if success');
-    t.type(res.msg, 'string', 'Should be a string');
+    t.type(result.result, 'number', 'Should be a number');
+    t.equal(result.result, 1, 'Should be 1 if success');
+    t.type(result.msg, 'string', 'Should be a string');
     t.end();
 
   });

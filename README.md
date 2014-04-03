@@ -86,8 +86,7 @@ List of all the existing badges
 
 ```javascript
 codebits.badges.listBadges(function (err, reply){
-  /*  reply is a string, use JSON.parse
-      each array elem: 
+  /*  each reply array elem: 
   {  
     "id": "string",           //badge id
     "img": "string",          //img url
@@ -105,8 +104,14 @@ List of all the users who have a certain badge
 
 ```javascript
 codebits.badges.getBadgeUsers('BADGE_ID', function(err, reply){
-  /*  reply is a string, use JSON.parse
-
+  /* reply is an array, where each element
+  {
+    "uid": "string", //user id
+    "name": "string", //user name
+    "nick": "string", //user nick
+    "proofurl": "string",
+    "md5mail": "string"
+  } 
   */
 });
 ```
@@ -119,9 +124,8 @@ Redeem a badge through a badge code
 
 ```javascript
 codebits.badges.redeemBadges('BADGE_CODE', function (err, reply){
-  /*  reply is a string, use JSON.parse
-      reply.error.id = '1' if success, 0 otherwise 
-  */
+  // if successful reply will be an object with success code and msg
+  // if not, error code and reason 
 });
 ```
 
@@ -133,8 +137,17 @@ Returns the body parts you can play with to build your bot.
 
 ```javascript
 codebits.bots.getBodyParts( function (err, reply){
-  /*  reply is a string, use JSON.parse
-      full list of body parts
+  /*  body elem contains array for body parts
+  { 
+    "body":
+      [{
+        "id": "01",
+        "picker": "\/builder\/avatar_images\/body\/picker\/t-body-01.png",
+        "file": "\/builder\/avatar_images\/body\/composer\/body-01.png"
+      },
+      { .... }, ....
+      ]
+  }
   */
 });
 
@@ -146,8 +159,20 @@ Returns the bot structure for a certain user
 
 ```javascript
 codebits.bots.getUserBot('USER_ID', function (err, reply){
-  /*  reply is a string, use JSON.parse
-      body,bgcolor,grad,eyes,mouth,legs,head,arms,balloon.
+  /* example reply object: 
+  {
+    "bgcolor":0,
+    "grad":0,
+    "body":"04",
+    "eyes":"07",
+    "mouth":"05",
+    "legs":"06",
+    "head":"01",
+    "arms":"17",
+    "balloon":false,
+    "botfile":"\/bots\/39f0e732e0d976c486573f53c687cc9d",
+    "comments_token":"2a680f5a39bf2e59b60e123cb22fb29611317522"
+  }
   */
 });
 ```
@@ -178,8 +203,7 @@ If `file:` field is null it defaults to `/tmp/bot.png`.
 
 ```javascript
 codebits.bots.makeBot(opts, function (err, res, body){
-  
-
+  //the img will be saved to the path, res and body are in original form
 });
 ```
 
@@ -194,8 +218,8 @@ Returns a success/unsuccess message.
 ```javascript
 //_token is optional
 codebits.bots.setBot(opts, _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
-      if success, JSON.parse(reply).result should be 1, 0 otherwise
+  /* reply success example: 
+    { result: 1, user: '3949', msg: 'bot set' } //success
   */
 });
 ```
@@ -206,8 +230,9 @@ Returns this year's codebits calendar with detailed information.
 
 ```javascript
 codebits.calendar.getCalendar( function (err, result){
-  /*  result is a string, use JSON.parse
+  /*  
       Calendar is an array
+      check the full object at: https://services.sapo.pt/Codebits/calendar
   */
 });
 ```
@@ -223,8 +248,21 @@ Authentication is optional, returns the user thumb option under 'rated', if prov
 
 ```javascript
 codebits.callfortalks.listSubmissions( function (err, reply){
-  /*  reply is a string, use JSON.parse
-      each talk object comes in an array
+  /*  an array where each object is a talk:
+    {
+      id: "string",
+      title: "string",
+      description: "string",
+      regdate: "2013-10-25 13:57:08",
+      up: 'string", //n votes up
+      down: "string", //n votes down
+      lang: "en",
+      user: "string",
+      userid: "string",
+      rated: "string",
+      approved: 1, //if approved
+      comments_token: "string" //useful to submit comments
+    }
   */
 });
 ```
@@ -238,8 +276,9 @@ Vote up a proposed talk by its id.
 ```javascript
 //_token is optional
 codebits.callfortalks.voteTalkUp('TALK_ID', _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
+  /*  
       Confirmation object returns the same talk id
+      { talk: '100', thumbs: 'up' }
   */
 });
 ```
@@ -252,8 +291,9 @@ Vote down a proposed talk by its id.
 ```javascript
 //_token is optional
 codebits.callfortalks.voteTalkDown('TALK_ID', _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
+  /*  
       Confirmation object returns the same talk id
+      { talk: '100', thumbs: 'down' }
   */
 });
 ```
@@ -274,8 +314,8 @@ var opts = {
 };
 
 codebits.comment.postComment(opts, function (err, reply){
-  /*  reply is a string, use JSON.parse
-      JSON.parse(reply).result should 1 if successm 0 otherwise
+  /*  
+    { result: 1, msg: 'comment posted' }
   */
 });
 ```
@@ -291,7 +331,7 @@ Returns the list of submitted projects for this year's competition.
 ```javascript
 //_token is optional
 codebits.projects.listProjects(_token, function (err, reply){
-  /*  reply is a string, use JSON.parse
+  /*  
       returns an array where each object is a project
   */
 });
@@ -306,8 +346,8 @@ Returns information about a specfic project.
 ```javascript
 //_token is optional
 codebits.ptojects.getProjectInfo('PROJECT_ID', _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
-      contains object with project info
+  /*  
+      reply contains object with project info
   */
 });
 ```
@@ -318,8 +358,8 @@ Returns information about the number of votes for the project being voted at the
 
 ```javascript
 codebits.projects.getCurrentVotes( function (err, reply){
-  /*  repluy is string, use JSON.parse
-      d
+  /*  //example reply obj
+    { project: '353', yes: 63, no: 56 } 
   */
 });
 ```
@@ -333,8 +373,8 @@ Votes for the current project being presented. 1 for yes (liked it), 0 for no.
 ```javascript
 //_token is optional
 codebits.projects.voteCurrentProject('1', _token, function (err, reply){
-  /*  reply is string, use JSON.parse
-      JSON.parse(reply).result should be 1 if you voted 1, 0 otherwise
+  /*  //confirmation reply object
+    { result: 1, project: '353' }
   */
 });
 ```
@@ -348,8 +388,15 @@ Search this year's edition registered users database
 ```javascript
 //_token is optional
 codebits.search.searchByName('nick', _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
-      Gets users with nick or similar
+  /*  //example reply for nick=celso
+  [ { id: '1119',
+    nick: 'Zed_Blade',
+    name: 'Celso Bem dos Santos',
+    md5mail: '44c4eb5469934ceebfffe940d72f9521' },
+  { id: '1',
+    nick: 'celso',
+    name: 'Celso Martinho',
+    md5mail: '39f0e732e0d976c486573f53c687cc9d' } ]
   */
 });
 ```
@@ -365,7 +412,26 @@ Returns basic user information.
 ```javascript
 //_token is optional
 codebits.users.getUserbyID('ID', _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
+  /* 
+  { id: 'string',
+    nick: 'string',
+    avatar: 'string',
+    twitter: 'string',
+    name: 'string',
+    md5mail: '39f0e732e0d976c486573f53c687cc9d',
+    checkin_date: 0,
+    karma: '143',
+    bio: 'the users bio',
+    blog: 'string'
+    coderep: 'string'
+    status: 'accepted',
+    badges:
+    [ '38',
+     '10' ],
+  skills:
+   [ 'api',
+     'design',
+     'web' ] } 
   */  
 });
 ```
@@ -379,7 +445,8 @@ Same as above, uses nick instead of ID.
 ```javascript
 //_token is optional
 codebits.users.getUserbyNick('NICK', _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
+  /*  
+    Same as above!
   */  
 });
 ```
@@ -393,7 +460,8 @@ Returns the list of the user's friends. A word about the status: accepted is acc
 ```javascript
 //_token is optional
 codebits.users.getUserFriends('ID', _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
+  /*  
+    An array of the same objects returned by getUserbyID/Nick
   */  
 });
 ```
@@ -407,7 +475,8 @@ Adds or confirms a user as your friend. Requires confirmation at the other end.
 ```javascript
 //_token is optional
 codebits.users.addUserAsFriend('ID', _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
+  /*  
+    
   */  
 });
 ```
@@ -421,7 +490,7 @@ Rejects a user as your friend. Deletes the pending request at the other end, if 
 ```javascript
 //_token is optional
 codebits.users.rejectUserAsFriend('ID', _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
+  /*  
   */  
 });
 ```
@@ -435,7 +504,7 @@ Returns the list of accepted users for this year's Codebits. You can filter the 
 ```javascript
 //_token is optional
 codebits.users.listAcceptedUsers('SKILL', _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
+  /*  
   */  
 });
 ```
@@ -449,7 +518,7 @@ Returns the list of favorite calendar sessions for a user.
 ```javascript
 //_token is optional
 codebits.users.userFavSessions('ID', _token, function (err, reply){
-  /*  reply is a string, use JSON.parse
+  /*  
   */
 });
 ```

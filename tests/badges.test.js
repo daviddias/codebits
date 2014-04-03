@@ -37,9 +37,8 @@ test('Log in', function(t) {
 
 test('Redeems badge through badge code', function(t) {
 
-  var code = '29as-3ads302-a'; //random code
+  var code = '1-7aa59a4a117-12'; //random code
   codebits.badges.redeemBadges(code, function(err, reply){
-
     t.type(reply, 'Object', 'Should be a object');
     t.equal(reply.error.id, '0', 'Should return an error with id 0');
     t.end();

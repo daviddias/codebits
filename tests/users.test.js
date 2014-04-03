@@ -30,6 +30,14 @@ test('Get User by Nick', function(t) {
   });
 });
 
+/*test('Get User by Nick', function(t) {
+  codebits.users.getUserFriends('1', function(err, result) {
+    console.log(result);
+    t.end();
+  });
+});
+*/
+
 
 // test('Get User friends', function(t) {
 // // function getUserFriends(id, cb) 

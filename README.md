@@ -102,7 +102,7 @@ codebits.logIn('USERNAME', 'PASSWORD', function (err, token){
 
 # Other notes:
 
-The correct API endpoint for user info by nick was not `/user` but instead `/nick`
+The correct API endpoint for user info by nick is not `/user`, it is `/nick` instead 
 
 ![](https://i.cloudup.com/5dsQCrS675-1200x1200.png)
 

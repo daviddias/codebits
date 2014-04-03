@@ -6,7 +6,7 @@ Codebits API Node.js Module Wrapper
 
 ![Node-Codebits](https://github.com/diasdavid/codebits/raw/master/logo/node-codebits-small.png)
 
-This is the Codebits API Node.js Module Wrapper to speed up for development during that 72 hour straight hackathon we know and love!
+This is the Codebits API (https://codebits.eu/s/api) Node.js Module Wrapper to speed up for development during that 72 hour straight hackathon we know and love!
 
 # Installation
 1. `$ npm install codebits`

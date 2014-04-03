@@ -9,9 +9,8 @@ test('Search by name', function(t){
   var id = '110';
   codebits.calendar.getCalendar(function(err, result){
     
-    t.type(result, 'string', 'Result should be a string');
-    var res = JSON.parse(result);
-    t.type(res, 'Array', 'Result should be an array');
+    t.type(result, 'Object', 'Result should be a object');
+    t.type(result, 'Array', 'Result should be an array');
     t.end();
 
   });

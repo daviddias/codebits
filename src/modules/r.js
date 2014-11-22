@@ -1,5 +1,6 @@
 var request = require('request');
-var config  = require('./../config.json');
+var config  = require('./../../config.json');
+var fs = require('fs');
 
 exports = module.exports = function doRequest(options, cb) {
   if (typeof options !== 'object') {
@@ -11,10 +12,6 @@ exports = module.exports = function doRequest(options, cb) {
   }
 
   options.uri = config.url + options.uri;
-
-  // if (! options.json) { 
-  //   options.json = true;
-  // }
 
   return request(options, replied);
 
@@ -33,7 +30,7 @@ exports = module.exports = function doRequest(options, cb) {
   }
 };
 
-['post', 'delete', 'get', 'put'].forEach(inject);
+;['post', 'delete', 'get', 'put'].forEach(inject);
 
 function inject(method) {
   exports[method] = function(options, cb) {
@@ -47,8 +44,6 @@ function inject(method) {
   };
 }
 
-//['getImg'].forEach(test);
-
 exports.getImg = function(options, cb){
 
   if (typeof options !== 'object') {
@@ -61,9 +56,6 @@ exports.getImg = function(options, cb){
 
   options.uri = config.url + options.uri;
 
-  // if (! options.json) { 
-  //   options.json = true;
-  // }
 
   return request.head(options.uri, function(err, res, body){
     
@@ -78,30 +70,11 @@ exports.getImg = function(options, cb){
       }
     }
     
-    //console.log('content-type:', res.headers['content-type']);
-    //console.log('content-length:', res.headers['content-length']);
-    
-    //var str = new require('stream').Writable;
-    //var stream = str();
-    //request(options.uri).pipe(stream).on('close', function(er){
-      //cb(er, stream);
-    //});
-    var fs = require('fs');
+
     request(options.uri).pipe(
-      fs.createWriteStream(options.file)).on('close', function(){
+      fs.createWriteStream(options.file)).on('close', function() {
         cb(err, res, body);
       });
   });
 
 };
-
-
-
-/*
-exports.doImageRequest = function doImageRequest(options, cb){
-
-
-
-};
-
-*/

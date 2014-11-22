@@ -1,5 +1,5 @@
-var r = require('./../../modules/r.js');
-var token = require('./../../modules/token.js');
+var r = require('./../modules/r.js');
+var token = require('./../modules/token.js');
 
 exports = module.exports;
 

@@ -1,12 +1,16 @@
 Codebits API Node.js Module Wrapper
 =========
 
-[![Gitter chat](https://badges.gitter.im/diasdavid/codebits.png)](https://gitter.im/diasdavid/codebits) 
-[![Dependency Status](https://david-dm.org/diasdavid/codebits.svg?theme=shields.io)](https://david-dm.org/diasdavid/codebits)
+This is the Codebits API (https://codebits.eu/s/api) Node.js Module Wrapper to speed up for development during that 72 hour straight hackathon we know and love!
 
 ![Node-Codebits](https://github.com/diasdavid/codebits/raw/master/logo/node-codebits-small.png)
 
-This is the Codebits API (https://codebits.eu/s/api) Node.js Module Wrapper to speed up for development during that 72 hour straight hackathon we know and love!
+# Badgers
+[![NPM](https://nodei.co/npm/codebits.png?downloads=true&stars=true)](https://nodei.co/npm/codebits/)
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/diasdavid/codebits?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) 
+[![Dependency Status](https://david-dm.org/diasdavid/codebits.svg)](https://david-dm.org/diasdavid/codebits)
+
+
 
 # Installation
 1. `$ npm install codebits`
@@ -29,7 +33,9 @@ codebits.users.getUserbyID('USERID', anotherToken, function(err, user){
 
 # Disclaimer
 
-This module was built in a very quick 'hacky' manner, it has tests, which is a good thing, but it is not bullet proof, if you find any bug or a better way to do things, we accept happily pull requests. Big thanks to [axfcampos](https://github.com/axfcampos) who liked the idea and offered his time to implement several of the functionalities.
+This module was built in a very quick 'hacky' manner, it has tests, which is a good thing, but it is not bullet proof, if you find any bug or a better way to do things, we accept happily pull requests. 
+
+Big thanks to [axfcampos](https://github.com/axfcampos) who liked the idea and offered his time to implement several of the functionalities.
 
 # Table of Contents
 

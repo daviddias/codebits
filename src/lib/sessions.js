@@ -1,4 +1,4 @@
-var r = require('./../../modules/r.js');
+var r = require('./../modules/r.js');
 
 exports = module.exports;
 

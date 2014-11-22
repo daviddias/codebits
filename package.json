@@ -2,24 +2,46 @@
   "name": "codebits",
   "version": "0.2.0",
   "description": "codebits.eu API module wrapper",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "node_modules/.bin/tap tests/*.test.js"
+    "codestyle": "./node_modules/.bin/jscs -p google src/index.js tests/*.js",
+    "lint": "./node_modules/.bin/jshint .",
+    "test": "node_modules/.bin/tap tests/*-test.js",
+    "test-new": "node ./node_modules/.bin/lab -r tap tests/*-test.js | ./node_modules/.bin/tap-spec",
+    "test-cov": "node ./node_modules/.bin/lab -t 80 tests/*-test.js",
+    "test-cov-html": "node ./node_modules/.bin/lab -r html -o coverage.html tests/*-test.js"
   },
+  "precommit": [
+    "codestyle",
+    "lint",
+    "test"
+  ],
   "author": "David Dias <daviddias.p@gmail.com> (http://daviddias.me)",
-  "contributors": ["Alexandre Campos <alexandrefilipecampos@gmail.com>"],
+  "contributors": [
+    "Alexandre Campos <alexandrefilipecampos@gmail.com>"
+  ],
   "license": "MIT",
   "dependencies": {
-    "request": "^2.34.0",
-    "tap": "^0.4.8"
+    "request": "^2.34.0"
   },
   "keywords": [
     "codebits",
-    "lisbon"
+    "lisbon",
+    "conference",
+    "hackathon",
+    "72 hours",
+    "api",
+    "wrapper"
   ],
   "repository": "git@github.com:diasdavid/codebits.git",
   "homepage": "https://github.com/diasdavid/codebits",
   "devDependencies": {
-    "precommit-hook": "^0.3.10"
+    "code": "^1.2.1",
+    "jscs": "^1.7.3",
+    "jshint": "^2.5.10",
+    "lab": "^5.0.3",
+    "precommit-hook": "^1.0.7",
+    "tap": "^0.4.8",
+    "tap-spec": "^2.1.0"
   }
 }

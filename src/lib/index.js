@@ -5,6 +5,6 @@ exports.search        = require('./search');
 exports.comment       = require('./comments');
 exports.session       = require('./sessions');
 exports.calendar      = require('./calendar');
-exports.callfortalks  = require('./callfortalks');
+exports.callfortalks  = require('./call-for-talks');
 exports.badges        = require('./badges');
 exports.projects      = require('./projects');

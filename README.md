@@ -7,6 +7,7 @@ This is the Codebits API (https://codebits.eu/s/api) Node.js Module Wrapper to s
 
 # Badgers
 [![NPM](https://nodei.co/npm/codebits.png?downloads=true&stars=true)](https://nodei.co/npm/codebits/)
+
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/diasdavid/codebits?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) 
 [![Dependency Status](https://david-dm.org/diasdavid/codebits.svg)](https://david-dm.org/diasdavid/codebits)
 
